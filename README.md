@@ -17,7 +17,7 @@ You should have [Ghostscript](http://www.ghostscript.com/) >= 9.16 installed and
 
 The package can be installed via composer:
 ``` bash
-$ composer require imal-h/pdf-box
+$ composer require vsitnikov/pdflib
 ```
 
 ## Usage
@@ -26,10 +26,10 @@ Converting a PDF to set of images.
 
 ```php
 
-$pdflib = new ImalH\PDFLib\PDFLib();
+$pdflib = new vsitnikov\PDFLib\PDFLib();
 $pdflib->setPdfPath($pdf_file_path);
 $pdflib->setOutputPath($folder_path_for_images);
-$pdflib->setImageFormat(\ImalH\PDFLib\PDFLib::$IMAGE_FORMAT_PNG);
+$pdflib->setImageFormat(\vsitnikov\PDFLib\PDFLib::$IMAGE_FORMAT_PNG);
 $pdflib->setDPI(300);
 $pdflib->setPageRange(1,$pdflib->getNumberOfPages());
 $pdflib->setFilePrefix('page-'); // Optional
@@ -40,10 +40,10 @@ Alternatively using chaining:
 
 ```php
 
-$files = (new ImalH\PDFLib\PDFLib())
+$files = (new vsitnikov\PDFLib\PDFLib())
     ->setPdfPath($pdf_file_path)
     ->setOutputPath($folder_path_for_images)
-    ->setImageFormat(\ImalH\PDFLib\PDFLib::$IMAGE_FORMAT_PNG)
+    ->setImageFormat(\vsitnikov\PDFLib\PDFLib::$IMAGE_FORMAT_PNG)
     ->setDPI(300)
     ->setPageRange(1,$pdflib->getNumberOfPages())
     ->setFilePrefix('page-') // Optional
@@ -55,7 +55,7 @@ Making a PDF from set of images
 
 ```php
 
-$pdflib = new ImalH\PDFLib\PDFLib();
+$pdflib = new vsitnikov\PDFLib\PDFLib();
 $imagePaths = ["images-1.jpg","images-2.jpg"];
 $pdflib->makePDF($destination_pdf_file_path,$imagePaths);
 
@@ -71,7 +71,7 @@ $pdfBox->getNumberOfPages(); //returns the number of pages in the pdf
 $pdfBox->setPageRange(1,2); // allows you to convert only few pages in the PDF Document
 $pdfBox->setImageQuality(95); // allows you to tell the quality you expect in the output Jpg file (only jpg)
 $pdfBox->setDPI(300); //setting the DPI (Dots per inch) of output files
-$pdfLib->setImageFormat(\ImalH\PDFLib\PDFLib::$IMAGE_FORMAT_PNG,$dDownScaleFactor=null);   //this will set the output image format, default it is jpg, but I recommend using pdf to png because it seems it is faster
+$pdfLib->setImageFormat(\vsitnikov\PDFLib\PDFLib::$IMAGE_FORMAT_PNG,$dDownScaleFactor=null);   //this will set the output image format, default it is jpg, but I recommend using pdf to png because it seems it is faster
 /*
 $dDownScaleFactor=integer
 This causes the internal rendering to be scaled down by the given (integer <= 8) factor before being output. For example, the following will produce a 200dpi output png from a 600dpi internal rendering:
